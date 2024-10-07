@@ -17,18 +17,17 @@ body {
   display: grid;
   grid-template-columns: auto 1fr;
 }
-.header {
-  background-color: white;
-}
 #right-container {
   display: grid;
   grid-template-rows: auto 1fr;
+}
+.header {
+  background-color: white;
 }
 .content {
   background-color: lightgrey;
 }
 #sidebar {
-  color: var(--text-color);
   background-color: var(--primary-color);
   height: 100vh;
   width: 16rem;
@@ -54,34 +53,8 @@ body {
   justify-content: flex-end;
   .logo{
     font-weight: bold;
+    color: var(--text-color);
   }
-}
-#sidebar ul li.active a {
-  color: var(--accent-color);
-  svg {
-    fill: var(--accent-color);
-  }
-}
-#sidebar a, #sidebar .button-dropdown, #sidebar .logo {
-  color: var(--text-color); 
-  display: flex;
-  text-decoration: none;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1rem;
-}
-.button-dropdown {
-  width: 100%;
-  text-align: left;
-  background: none;
-  border: none;
-  font: inherit;
-  cursor: pointer;
-}
-#sidebar a:hover, #sidebar .button-dropdown:hover{
-  background-color:  #324d99;
-  border-left: 0.3rem solid var(--accent-color);
-  padding-left: calc(1.05rem - 0.3rem);
 }
 #sidebar .logo {
   font-size: 1.4rem;
@@ -90,38 +63,10 @@ body {
   margin-bottom: 3vh;
 }
 #sidebar svg {
-  fill: white;
+  fill: rgba(255, 255, 255, 0.8);
   height: 2rem;
   width: 2rem;
   flex-shrink: 0;
-}
-#sidebar a span, #sidebar .button-dropdown span {
-  flex-grow: 1;
-}
-#sidebar .sub-menu {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: 
-    0.3s ease-in-out;
-
-  > div {
-    overflow: hidden;
-  }
-}
-#sidebar .sub-menu.show {
-  grid-template-rows: 1fr;
-}
-.button-dropdown.rotate svg:last-child {
-  rotate: 180deg;
-}
-#button-toggle-sidebar.rotate svg {
-  rotate: -180deg;
-}
-.button-dropdown svg:last-child {
-  transition: rotate 0.3s ease;
-}
-#sidebar .sub-menu a {
-  padding-left: 4rem;
 }
 #button-toggle-sidebar {
   margin-left: auto;
@@ -138,22 +83,82 @@ body {
     transition: rotate 0.3s ease;
   }
 }
-
-/* .button-sidebar {
-  width: 100%;
-  height: clamp(3rem, 7.5vh, 4rem);
-  padding: 1rem 2rem;
-  padding-right: 4rem;
-  color: white;
+#button-toggle-sidebar > svg {
+  fill: white;
+}
+#sidebar a, #sidebar .button-dropdown, #sidebar .logo { 
+  color: rgba(255, 255, 255, 0.8);
   display: flex;
+  text-decoration: none;
   align-items: center;
   gap: 1rem;
-  background-color: transparent;
+  padding: 1rem 1rem;
+}
+#sidebar a:hover, 
+#sidebar .button-dropdown:hover {
+  background-color: #324d99;
+} 
+#sidebar li:not(.active) a:hover, 
+#sidebar li:not(.active) .button-dropdown:hover {
+  border-left: 0.3rem solid white;
+  padding-left: calc(1.05rem - 0.3rem);
+  color: white;
+}
+#sidebar li:not(.active) a:hover svg, 
+#sidebar li:not(.active) .button-dropdown:hover svg {
+  fill: white;
+}
+#sidebar li.active a, 
+#sidebar li.active .button-dropdown {
+  border-left: 0.3rem solid var(--accent-color);
+  /* background: linear-gradient(270deg, #93c5fd 0%, var(--primary-color) 100%); */
+  padding-left: calc(1.05rem - 0.3rem);
+}
+#sidebar ul li.active a {
+  color: var(--accent-color);
+  svg {
+    fill: var(--accent-color);
+  }
+}
+#sidebar ul.sub-menu li:not(.active) a:hover,
+#sidebar ul.sub-menu li:not(.active) .button-dropdown:hover
+#sidebar .logo {
+  /* margin-left: calc(3.3rem - 0.3rem); */
+  border-left: 0.3rem solid var(white); 
+  padding-left: calc(4.05rem - 0.3rem);
+}
+.button-dropdown {
+  width: 100%;
+  text-align: left;
+  background: none;
   border: none;
+  font: inherit;
   cursor: pointer;
 }
-.button-sidebar:hover {
-  background-color:  #324d99;
-  border-left: 0.5rem solid #d1d5db;
-  padding-left: calc(2rem - 0.5rem);
-} */
+#sidebar a span, #sidebar .button-dropdown span {
+  flex-grow: 1;
+}
+#sidebar .sub-menu {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 
+    0.3s ease-in-out;
+  > div {
+    overflow: hidden;
+  }
+}
+#sidebar .sub-menu.show {
+  grid-template-rows: 1fr;
+}
+#sidebar .sub-menu a {
+  padding-left: 4rem;
+}
+.button-dropdown.rotate svg:last-child {
+  rotate: 180deg;
+}
+#button-toggle-sidebar.rotate svg {
+  rotate: -180deg;
+}
+.button-dropdown svg:last-child {
+  transition: rotate 0.3s ease;
+}
